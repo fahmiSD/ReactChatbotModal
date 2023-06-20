@@ -133,9 +133,19 @@ export default function Modal({ isVisible, onClose }) {
 		addRandomResponseWithDelay();
 	};
 
-	const onFormSubmit = (e) => {
-		e.preventDefault();
-		// send state to server with e.g. `window.fetch`
+	const onFormSubmit = (event) => {
+		event.preventDefault();
+		// Perform any necessary actions with the inputText
+		handleSend();
+	};
+
+	// Event handler for key down on the input field
+	const handleKeyDown = (event) => {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			// Call the form submit function
+			onFormSubmit(event);
+		}
 	};
 
 	const messagesContainerRef = useRef(null);
@@ -302,7 +312,6 @@ export default function Modal({ isVisible, onClose }) {
 								<div className="flex flex-row items-center h-16 rounded-xl border-[#F3F4F6] border-4 bg-white w-[100%] -mt-[64px] px-4 my-4 ">
 									<div className="mr-4">
 										<button
-											type="submit"
 											className={`flex items-center justify-center rounded-xl text-white px-4 py-1 flex-shrink-0 bg-[#DD3B30] hover:bg-[#EA4C46]`}
 											onClick={handleClose}
 											id="outSide"
@@ -340,6 +349,7 @@ export default function Modal({ isVisible, onClose }) {
 												onChange={handleInputChange}
 												onFocus={handleInputFocus}
 												onBlur={handleInputBlur}
+												onKeyDown={handleKeyDown}
 											/>
 										</div>
 									</div>
