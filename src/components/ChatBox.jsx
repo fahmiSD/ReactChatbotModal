@@ -125,35 +125,12 @@ export default function Modal({ isVisible, onClose }) {
     ]);
 
     addRandomResponseWithDelay();
-    // const data = {
-    //   // accessKey:
-    //   //   "6900857085283594379390364687309142469943533006824615695366304553",
-    //   // message: inputText,
-    // };
-
-    // console.log("Ini data :", data);
-    // // axios.defaults.baseURL = "http://192.168.123.63:5000";
 
     setInputText("");
     const inputElement = document.getElementById("inputText");
     if (inputElement) {
       inputElement.blur();
     }
-
-    // axios
-    //   .post("/chat", data)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     // Handle successful response
-    //
-    //     setMessages((prevMessages) =>
-    //       prevMessages.filter((message) => message.isLoading !== true)
-    //     );
-    //     setIsLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
 
     setTimeout(() => {
       setMessages((prevMessages) => [
